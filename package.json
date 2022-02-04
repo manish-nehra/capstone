@@ -1,0 +1,17 @@
+{
+
+  "version": "1.0.0",
+  "description": "Creating realtime lms application",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon server"
+  },
+  "author": "Sushmita Kumari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "package.json": "^2.0.1",
+    "path": "^0.12.7"
+  }
+}
