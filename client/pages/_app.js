@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
         <TopNav/>
         <Component {...pageProps }/> 
         </>
+        
     );
 
 };
