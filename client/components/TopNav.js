@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import Link from 'next/Link';
+import Link from 'next/link';
 import { AppstoreOutlined, LoginOutlined, UserAddOutlined } from '@ant-design/icons';
 import {useState ,useEffect} from "react"; 
 const { Item } = Menu;
@@ -19,7 +19,7 @@ const TopNav = () => {
 
         <Item key="/login" onClick={(e)=>setCurrent(e.key)} icon = { <LoginOutlined/> } >
         <Link href = "/login"> Login </Link> </Item>
-
+ 
         <Item key="/register" onClick={(e)=>setCurrent(e.key)} icon = { <UserAddOutlined/> } >
         <Link href = "/register"> Register </Link> </Item>
 

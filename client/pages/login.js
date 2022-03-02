@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
-import {toast} from 'react-toastify';
-import {SyncOutlined} from "@ant-design/icons";
+import { toast } from 'react-toastify';
+import {SyncOutlined} from '@ant-design/icons';
 import Link from 'next/link';
+import { Context } from '../context';
+import {useRouter} from 'next/router'
 const Login = () => {
- const [email, setEmail] = useState("");
-      const [password, setPassword] = useState("");
+ const [email, setEmail] = useState("kanikathakur123@gmail.com");
+      const [password, setPassword] = useState("123456");
           const [loading,setLoading] = useState(false);
+		  
+		  //state
+		  const {state, dispatch} = useContext(Context);
+		  
+		  // router
+		   const router = useRouter();
+		  
+		    //console.log("STATE", state);
            const handleSubmit = async (e) => {
         e.preventDefault();
         // console.table({ name, email, password });
@@ -17,9 +27,17 @@ const Login = () => {
             password,
         });
         
-        toast.success(' Sucessful login ');
-         setLoading(false);  
-        // console.log("REGISTER RESPONSE",data);
+           //toast.success(' Sucessful Login ');
+           //console.log("LOGIN RESPONSE",data);
+		 dispatch({
+			type:"LOGIN",
+			payload: data,
+		}); 
+		// save in local storage
+		 window.localStorage.setItem("user", JSON.stringify(data));
+		  // redirect
+		   router.push("/");
+		   //setLoading(false);
     }catch(err){
         toast.error(err.response.data);
         setLoading(false);
@@ -42,7 +60,7 @@ const Login = () => {
         onChange = {(e) => setPassword(e.target.value) }
         placeholder = "Enter password"
         required/>
-        <div class="d-grid gap-2">
+        <div className="d-grid gap-2">
         <button type ="submit"className ="btn btn-block  btn-primary btn-lg"
         disabled={!email||!password}> {loading? <SyncOutlined spin /> : "Submit"} </button> 
         </div>  

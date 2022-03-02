@@ -52,7 +52,7 @@ const Register = () => {
         onChange = {(e) => setPassword(e.target.value) }
         placeholder = "Enter password"
         required />
-        <div class="d-grid gap-2">
+        <div className="d-grid gap-2">
         <button type ="submit"className ="btn btn-block  btn-primary btn-lg"
         disabled={!name || ! email ||!password}> {loading? <SyncOutlined spin /> : "Submit"} </button> 
         </div>       
