@@ -49,8 +49,8 @@ const TopNav = () => {
         )}
         
         {user !== null && (
-            <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-end">
-                <Item onClick={logout} className="float-end">
+            <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-right">
+                <Item onClick={logout} className="float-right">
             Logout
 
           </Item>
