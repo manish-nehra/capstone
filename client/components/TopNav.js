@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import Link from 'next/link';
-import { AppstoreOutlined, LoginOutlined, LogoutOutlined, CoffeeOutlined, UserAddOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, LoginOutlined, LogoutOutlined, CoffeeOutlined, UserAddOutlined } from'@ant-design/icons';
 import {useState ,useEffect, useContext} from "react"; 
 
 import {Context} from "../context";
@@ -26,7 +26,7 @@ const TopNav = () => {
     },[process.brower && window.location.pathname]);
 
     const logout = async() => {
-        dispatch({type: "Logout" });
+        dispatch({type: "LOGOUT" });
         window.localStorage.removeItem("user");
         const {data} = await axios.get("/api/logout");
         toast(data.message);
@@ -49,11 +49,11 @@ const TopNav = () => {
         )}
         
         {user !== null && (
-            <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-right">
-                <Item onClick={logout} className="float-right">
+            <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-end">
+                <Item onClick={logout} className="float-end">
             Logout
 
-        </Item>
+          </Item>
             </SubMenu>
         )}
 
