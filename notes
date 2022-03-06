@@ -7,3 +7,4 @@ We need to generate json web token /JWT and send to client
 will be used to acess protected routes
 
 npm i jsonwebtoken
+npm i jsonwebtoken V, K, S 
