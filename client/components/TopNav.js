@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import {toast} from "react-toastify";
 //import SubMenu from 'antd/lib/menu/SubMenu';
 
-const { Item, SubMenu } = Menu;
+const { Item, SubMenu, ItemGroup } = Menu;
 
 const TopNav = () => {
     const [current , setCurrent] = useState("");
@@ -21,7 +21,7 @@ const TopNav = () => {
 
 
     useEffect(()=>{
-        process.browser && setCurrent(window.location.pathname)
+        process.browser && setCurrent(window.location.pathname);
         // console.log(window.location.pathname)
     },[process.brower && window.location.pathname]);
 
@@ -44,16 +44,20 @@ const TopNav = () => {
               <Link href = "/login"> Login </Link> </Item>
  
               <Item key="/register" onClick={(e)=>setCurrent(e.key)} icon = { <UserAddOutlined/> } >
-             <Link href = "/register"> Register </Link> </Item>
+               <Link href = "/register"> Register </Link> </Item>
             </>
         )}
         
         {user !== null && (
             <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-right">
-                <Item onClick={logout} className="float-right">
-            Logout
-
-          </Item>
+                <ItemGroup>
+				   <Item key= "/user">
+				     <Link href = "/user">
+					   <a>Dashboard</a>
+					 </Link>
+				   </Item>
+				  <Item onClick={logout}>Logout</Item>
+				</ItemGroup>
             </SubMenu>
         )}
 
