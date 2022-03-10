@@ -9,6 +9,7 @@ will be used to acess protected routes
 npm i jsonwebtoken
 npm i jsonwebtoken V, K, S 
 installed the two libraries npm i npm i csurf and npm i cookie-parser for server. V, K.
-Prootected route ( If we get successful response then we can show the protected page to the user). -> V
-
-npm i express-jwt  V,K
+Protected route ( If we get successful response then we can show the protected page to the user). -> V
+npm i express-jwt     -> V,K   
+server> npm i aws-sdk    -> V
+AWS Send-Email Verification 
