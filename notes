@@ -11,5 +11,5 @@ npm i jsonwebtoken V, K, S
 installed the two libraries npm i npm i csurf and npm i cookie-parser for server. V, K.
 Protected route ( If we get successful response then we can show the protected page to the user). -> V
 npm i express-jwt     -> V,K   
-server> npm i aws-sdk    -> V
+server> npm i aws-sdk    -> V,K
 AWS Send-Email Verification 
