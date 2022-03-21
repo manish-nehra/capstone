@@ -1,6 +1,7 @@
 import User from '../models/user';
 import { hashPassword,comparePassword } from '../utils/auth';
 import jwt from 'jsonwebtoken';
+import {nanoid} from 'nanoid';
 import AWS from "aws-sdk"; 
 
 const awsConfig = {
@@ -141,3 +142,56 @@ export const sendTestEmail = async (req, res) => {
    });
 
 };
+
+
+
+export const forgotPassword = async(req, res) => 
+{
+    try 
+    {
+const {email} = req.body;
+// console.log(email);
+const shortCode = nonoid(6).toUpperCase();
+const user = await User.findOneAndUpdate({email}, {passwordResetCode: shortCode});
+
+if(!user) return res.status(400).send("User not found");
+
+// prepare for email
+    const params = {
+        Source: process.env.EMAIL_FROM,
+        Destination: {
+            ToAddresses: [email]
+        },
+        Message: {
+            Body: {
+                Html: {
+                    Charset: "UTF-8",
+                    Data: `
+                    <html> 
+                    <h1> Reset Password </h1> 
+                    <p> User this code to reset your password</p>
+                    <h2> style = "color:red;">${shortCode} </h2>
+                    <i> edemy.com </i> 
+                    </html> 
+                    `,
+                },
+            },
+            Subject: {
+                Charset: "UTF-8",
+                Data: "Reset Password",
+        },
+      },
+    };
+
+    const emailSent = SES.sendEmail(params).promise();
+    emailSent.then( (data) => {
+        console.log(data);
+        res.json({ ok: true });
+    })
+    .catch( (err) => {
+        console.log(err);
+    });
+    } catch(err) {
+        console.log(err);
+    }
+}

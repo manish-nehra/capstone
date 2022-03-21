@@ -2,7 +2,7 @@ import {useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import {SyncOutlined} from '@ant-design/icons';      
-import Link from 'next/link';
+import {Link} from 'next/link';
 import {Context} from '../context';
 import {useRouter} from 'next/router';
 
@@ -29,7 +29,7 @@ const ForgotPassword = () => {
 	   e.preventDefault();
 	   try{
 		   setLoading(true);
-		   const {data} = await axios.post("/api/forgot-Password ,{email}");
+		   const {data} = await axios.post("/api/forgot-password" ,{email});
 		   setSuccess(true);
 		   toast("check your email for the secret code");
 	   } catch (err){
@@ -43,7 +43,7 @@ const ForgotPassword = () => {
 	     <h1 className = "jumbotron text-center bg-primary square">Forgot Password</h1>
 	     
 		 <div className = "container col-md-4 offset-md-4 pb-5 ">
-		   <from onSubmit={handleSubmit}>
+		   <form onSubmit={handleSubmit}>
 		      <input
 			      type = "email"
 				  className = "from-control mb-4 p-4"
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
 			  <button type= "submit" className="btn btn-primary btn-block p-2" disabled={loading || !email}>
 			     {loading? <SyncOutlined spin/> :"Submit"}
 			  </button>
-		   </from>
+		   </form>
 		 </div>
 	 
 	 </>
