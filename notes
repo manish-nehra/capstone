@@ -10,6 +10,13 @@ npm i jsonwebtoken
 npm i jsonwebtoken V, K, S 
 installed the two libraries npm i npm i csurf and npm i cookie-parser for server. V, K.
 Protected route ( If we get successful response then we can show the protected page to the user). -> V
+installed the two libraries npm i npm i csurf and npm i cookie-parser for server. V, K ,S.
+Protected route ( If we get successful response then we can show the protected page to the user). -> V , K, s
+create a protected page and restrict only to logged in user with valid token
+to verify if token is valid , you need to send request to backend
+(browser will include cookie token in headers automatically)
+if you get sucessful response then you can show the protected page to the user
+
 npm i express-jwt     -> V,K   
 server> npm i aws-sdk    -> V,K
 AWS Send-Email Verification 

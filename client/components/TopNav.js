@@ -56,7 +56,7 @@ const TopNav = () => {
 					   <a>Dashboard</a>
 					 </Link>
 				   </Item>
-				  <Item onClick={logout}>Logout</Item>
+				  <Item onClick={logout} icon={<LogoutOutlined/>}>Logout</Item>
 				</ItemGroup>
             </SubMenu>
         )}
