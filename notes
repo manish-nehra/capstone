@@ -13,4 +13,4 @@ Protected route ( If we get successful response then we can show the protected p
 npm i express-jwt     -> V,K   
 server> npm i aws-sdk    -> V,K
 AWS Send-Email Verification 
-installed the npm i nanoid -> V
+installed the npm i nanoid -> V,K
