@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import Link from 'next/link';
-import { AppstoreOutlined, LoginOutlined, LogoutOutlined, CoffeeOutlined, UserAddOutlined, CarryOutOutlined, TeamOutlined, } from'@ant-design/icons';
+import { AppstoreOutlined, LoginOutlined, LogoutOutlined, CoffeeOutlined, UserAddOutlined } from'@ant-design/icons';
 import {useState ,useEffect, useContext} from "react"; 
 
 import {Context} from "../context";
@@ -37,21 +37,6 @@ const TopNav = () => {
         <Item  key="/" onClick={(e)=>setCurrent(e.key)} icon = { <AppstoreOutlined/> } >
         <Link href = "/"> App </Link> 
         </Item>
-		
-		{user && user.role && user.role.includes("Instructor") ? (
-		   <Item 
-		   key="/instructor/course/create" 
-		   onClick={(e)=>setCurrent(e.key)}
-		   icon = { <CarryOutOutlined/> } >
-              <Link href = "/instructor/course/create"><a>Create Course</a></Link> </Item>
-		   ):(
-		   <Item 
-		   key="/user/becomeInstructor" 
-		   onClick={(e)=>setCurrent(e.key)}
-		   icon = { <TeamOutlined/> } >
-              <Link href = "/user/becomeInstructor"><a>Become Instructor</a></Link> </Item>
-		   
-		   )}
 
         {user === null && (
             <>
