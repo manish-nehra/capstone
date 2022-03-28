@@ -20,4 +20,4 @@ if you get sucessful response then you can show the protected page to the user
 npm i express-jwt     -> V,K   
 server> npm i aws-sdk    -> V,K
 AWS Send-Email Verification 
-installed the npm i nanoid -> V
+installed the npm i nanoid -> V,K
