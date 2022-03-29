@@ -21,3 +21,6 @@ npm i express-jwt     -> V,K
 server> npm i aws-sdk    -> V,K
 AWS Send-Email Verification 
 installed the npm i nanoid -> V
+
+Remember always use hashedPassword to fetch relvent
+password token 

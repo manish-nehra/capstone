@@ -11,10 +11,10 @@ export const hashPassword =(password)=>{
                     reject(err);
                 }
                 resolve(hash);
-            })
-        })  
-    }) 
-}
+            });
+        }) ; 
+    }) ;
+};
 
 export const comparePassword =(password,hashed)=>{
 return bcrypt.compare(password,hashed); 

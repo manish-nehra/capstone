@@ -69,7 +69,8 @@ const Login = () => {
         required/>
         <div className="d-grid gap-2">
         <button type ="submit"className ="btn btn-block  btn-primary btn-lg"
-        disabled={!email||!password}> {loading? <SyncOutlined spin /> : "Submit"} </button> 
+        disabled={!email||!password || loading}> {loading? <SyncOutlined spin /> : "Submit"} 
+        </button> 
         </div>  
         </form>
          <p className='text-center pt-3'>
