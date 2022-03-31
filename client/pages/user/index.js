@@ -5,13 +5,16 @@ import UserRoute from '../../components/routes/UserRoute';
 const UserIndex = () => {
   const {state:{user},} = useContext(Context);
    
-    return (
-        <UserRoute>
+    return (<>
+        
              <h1 className = "jumbotron text-center square" > 
              {/* <pre>{JSON.stringify(user,null,4)}</pre> */}
-              </h1>
-        </UserRoute>
 
+             user Dashboard
+              </h1>
+              <p>Welcome to dashboard</p>
+
+          </>
     );
 };
 

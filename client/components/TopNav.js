@@ -2,7 +2,7 @@ import { Menu } from 'antd';
 import Link from 'next/link';
 import { AppstoreOutlined, LoginOutlined, LogoutOutlined, CoffeeOutlined, UserAddOutlined, CarryOutOutlined, TeamOutlined, } from'@ant-design/icons';
 import {useState ,useEffect, useContext} from "react"; 
-
+// import {}
 import {Context} from "../context";
 import axios from "axios"
 import { useRouter } from "next/router";
@@ -64,9 +64,11 @@ const TopNav = () => {
         )}
         
         {user !== null && (
+             <>
+				  
             <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-right">
-                <ItemGroup>
-				   <Item key= "/user" onClick={(e)=>setCurrent(e.key)} >
+               <ItemGroup>
+                    <Item key= "/user" onClick={(e)=>setCurrent(e.key)} >
 				     <Link href = "/user">
 					   <a>Dashboard</a>
 					 </Link>
@@ -75,6 +77,7 @@ const TopNav = () => {
 				  <Item onClick={logout} icon={<LogoutOutlined/>}>Logout</Item>
 				</ItemGroup>
             </SubMenu>
+            </>
         )}
 
         </Menu>

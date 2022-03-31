@@ -17,10 +17,28 @@ to verify if token is valid , you need to send request to backend
 (browser will include cookie token in headers automatically)
 if you get sucessful response then you can show the protected page to the user
 
-npm i express-jwt     -> V,K   
-server> npm i aws-sdk    -> V,K
+npm i express-jwt     -> V,K,S   
+server> npm i aws-sdk    -> V,K,S
 AWS Send-Email Verification 
-installed the npm i nanoid -> V
+installed the npm i nanoid -> V,K,S
 
 Remember always use hashedPassword to fetch relvent
 password token 
+
+
+#Strip
+SetUp Stripe Payment - collect and pay out
+> use stripe connect (check supported countries)
+> recevie payment from users
+> automate the payment distribution
+> 70% to sellers (instructors) and keep 30% as platforms fee
+> get paid every 48 hours directly to bank account by stripe
+
+(Just read to reduce the addition efforts)
+On server directory
+npm i stripe query-string   -S
+instead installing manually
+just run commend
+npm i <package.json> --save -S
+it with automatically update the npm module with same version we all using in current project.
+It will hep us to rectify the errors as well more effectivily.
