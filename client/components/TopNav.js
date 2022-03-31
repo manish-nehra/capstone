@@ -66,10 +66,11 @@ const TopNav = () => {
         {user !== null && (
             <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-right">
                 <ItemGroup>
-				   <Item key= "/user">
+				   <Item key= "/user" onClick={(e)=>setCurrent(e.key)} >
 				     <Link href = "/user">
 					   <a>Dashboard</a>
 					 </Link>
+					 
 				   </Item>
 				  <Item onClick={logout} icon={<LogoutOutlined/>}>Logout</Item>
 				</ItemGroup>
