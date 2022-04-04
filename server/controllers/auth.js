@@ -105,11 +105,11 @@ export const currentUser = async (req, res) => {
 
 export const sendTestEmail = async (req, res) => {
   //  console.log("send email using SES");
-  //  res.json({ok: true});
+ // res.json({ok: true});
   const params = {
       Source: process.env.EMAIL_FROM,
       Destination: {
-      ToAddresses: ["vandanagautam1661@gmail.com"]
+      ToAddresses: ["nehramanish0101@gmail.com"]
       },
       ReplyToAddresses: [process.env.EMAIL_FROM],
       Message:{
@@ -152,7 +152,7 @@ export const forgotPassword = async(req, res) =>
     {
 const {email} = req.body;
 // console.log(email);
-const shortCode = nonoid(6).toUpperCase();
+const shortCode = nanoid(6).toUpperCase();
 const user = await User.findOneAndUpdate({email}, {passwordResetCode: shortCode});
 
 if(!user) return res.status(400).send("User not found");
