@@ -66,7 +66,7 @@ const TopNav = () => {
         {user !== null && (
              <>
 				  
-            <SubMenu icon={<CoffeeOutlined />} title={user && user.name} className="float-right">
+            <SubMenu  icon={<CoffeeOutlined />} title={user && user.name} style={{ marginLeft: 'auto' }}>
                <ItemGroup>
                     <Item key= "/user" onClick={(e)=>setCurrent(e.key)} >
 				     <Link href = "/user">

@@ -17,7 +17,7 @@ const UserRoute = ({children}) => {
     }, []);
 
     const fetchUser = async() => {
-        try {
+       /* try {
             const { data } = await axios.get('/api/current-user');
             // console.log(data);
             if(data.ok) setOk(true);
@@ -25,12 +25,12 @@ const UserRoute = ({children}) => {
             console.log(err);
             setOk(false);
 			router.push("/login");
-        }
+        } */
     };
 
     return (
         <>
-             {!ok ? ( <SyncOutlined spin className="d-flex justify-content-center display-1 text-primary p-5"/>
+             {ok ? ( <SyncOutlined spin className="d-flex justify-content-center display-1 text-primary p-5"/>
 		   ) : (
 		   <div className ="container-fluid">
 		      <div className="row">
