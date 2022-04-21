@@ -42,3 +42,5 @@ just run commend
 npm i <package.json> --save -S
 it with automatically update the npm module with same version we all using in current project.
 It will hep us to rectify the errors as well more effectivily.
+
+npm i lottie-web   -K
