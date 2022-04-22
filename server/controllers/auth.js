@@ -170,9 +170,8 @@ if(!user) return res.status(400).send("User not found");
                     Data: `
                     <html> 
                     <h1> Reset Password </h1> 
-                    <p> User this code to reset your password</p>
-                    <h2> style = "color:red;">${shortCode} </h2>
-                    <i> edemy.com </i> 
+                    <p> Use this code to reset your password</p>
+                    <h2 style = "color:red;">${shortCode} </h2>
                     </html> 
                     `,
                 },
