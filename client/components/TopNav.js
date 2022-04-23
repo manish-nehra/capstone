@@ -37,8 +37,31 @@ const TopNav = () => {
         <Item  key="/" onClick={(e)=>setCurrent(e.key)} icon = { <AppstoreOutlined/> } >
         <Link href = "/"> App </Link> 
         </Item>
+ {user == null && (
+     <>
+      <Item
+        key="/login"
+        onClick={(e) => setCurrent(e.key)}
+        icon={<LoginOutlined />}
+      >
+        <Link href="/login">
+          <a>Login</a>
+        </Link>
+      </Item>
 
-        {user && user.role && user.role.includes("Instructor") ? (
+      <Item
+        key="/register"
+        onClick={(e) => setCurrent(e.key)}
+        icon={<UserAddOutlined />}
+      >
+        <Link href="/register">
+          <a>Register</a>
+        </Link>
+      </Item>
+      </>
+      )}
+
+      {user!==null &&( user.role && user.role.includes("Instructor") ? (
 		   <Item 
 		   key="/instructor/course/create" 
 		   onClick={(e)=>setCurrent(e.key)}
@@ -50,18 +73,9 @@ const TopNav = () => {
 		   onClick={(e)=>setCurrent(e.key)}
 		   icon = { <TeamOutlined/> } >
               <Link href = "/user/becomeInstructor"><a>Become Instructor</a></Link> </Item>
-		   
-		   )}
-
-        {user === null && (
-            <>
-              <Item key="/login" onClick={(e)=>setCurrent(e.key)} icon = { <LoginOutlined/> } >
-              <Link href = "/login"> Login </Link> </Item>
- 
-              <Item key="/register" onClick={(e)=>setCurrent(e.key)} icon = { <UserAddOutlined/> } >
-               <Link href = "/register"> Register </Link> </Item>
-            </>
-        )}
+           )
+            
+            )}
         
         {user !== null && (
              <>

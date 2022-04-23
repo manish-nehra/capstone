@@ -5,9 +5,7 @@ const router = express.Router();
 //middleware
 import { requireSignin } from "../middlewares";
 //controller
-import {makeInstructor, getAccountStatus} from "../controllers/instructor";
+import {makeInstructor} from "../controllers/instructor";
  
-router.post('/make-instructor', requireSignin,makeInstructor);
-router.post("/get-account-status", requireSignin, getAccountStatus);
-
+router.post('/make-instructor',makeInstructor);
 module.exports = router;

@@ -7,7 +7,7 @@ import { Context } from '../context';
 import {useRouter} from 'next/router'
 const Login = () => {
  const [email, setEmail] = useState("kanikathakur123@gmail.com");
-      const [password, setPassword] = useState("123456");
+      const [password, setPassword] = useState("rrrrrr");
           const [loading,setLoading] = useState(false);
 		  
 		  //state
@@ -19,7 +19,7 @@ const Login = () => {
 		   const router = useRouter();
 		   
 		   useEffect(()=> {
-			   if (user !== null) router.push("/");
+			   if (user !== null) router.push("/user");
 		   }, [user]);
 		   
 		  
