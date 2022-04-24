@@ -24,6 +24,7 @@
         "path": "^0.12.7",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-image-file-resizer": "^0.4.7",
         "react-toastify": "^8.1.1",
         "update": "^0.4.2"
     }
