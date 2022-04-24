@@ -84,7 +84,7 @@ const CourseCreate = () => {
         />
       </div>
       <pre>{JSON.stringify(values, null, 4)}</pre>
-      <hr />
+      <hr/>
       <pre>{JSON.stringify(image, null, 4)}</pre>
     </InstructorRoute>
   );
