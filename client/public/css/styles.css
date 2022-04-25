@@ -1,11 +1,29 @@
 .square {
-    border-radius: 0px;
+    border-radius: 30px;
 }
 
 .jumbotron {
-    background-image: linear-gradient(to right, #007bff, #000);
-    color: #fff;
+    background-image: linear-gradient(to right, #FFFFC2 ,   #C3FDB8);
+    color: #000;
+	font-family:"Times New Roman", Times, serif;
 }
+
+.btn{
+	background-color:#6DF72B ;
+	font-family: cursive;
+	color: #0D0D0D; 
+	border-radius: 30px;
+	
+}
+
+.form-control{
+	direction:right;
+	border-color:#4B5320;
+}
+.container{
+	margin-top:3%;
+}
+
 
 #lottieContainer{
 	height: 150%;

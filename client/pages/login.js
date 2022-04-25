@@ -52,7 +52,7 @@ const Login = () => {
 };
 
     return ( <>
-        <h1 className = "jumbotron text-center bg-primary square"> Login </h1>
+        <h1 className = "jumbotron text-center bg-primary square mb-3 mt-1 p-3"> Login </h1>
         <div className ="container col-md-4 offset-md-4 pb-5"> 
         <form onSubmit ={handleSubmit}>
        <input type = "email"
@@ -68,7 +68,7 @@ const Login = () => {
         placeholder = "Enter password"
         required/>
         <div className="d-grid gap-2">
-        <button type ="submit"className ="btn btn-block  btn-primary btn-lg"
+        <button type ="submit"className ="btn btn-block btn-success btn-lg"
         disabled={!email||!password || loading}> {loading? <SyncOutlined spin /> : "Submit"} 
         </button> 
         </div>  

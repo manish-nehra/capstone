@@ -45,7 +45,7 @@ const Register = () => {
 
     return ( 
     <>
-        <h1 className ="jumbotron text-center bg-primary square"> Register </h1>  
+        <h1 className ="jumbotron text-center bg-primary square mb-3 mt-1 p-3"> Register </h1>  
         <div className ="container col-md-4 offset-md-4 pb-5"> 
         <form onSubmit ={handleSubmit}>
         <input type ="text"
@@ -67,7 +67,7 @@ const Register = () => {
         placeholder = "Enter password"
         required />
         <div className="d-grid gap-2">
-        <button type ="submit"className ="btn btn-block  btn-primary btn-lg"
+        <button type ="submit"className ="btn btn-block  btn-success btn-lg"
         disabled={!name || ! email ||!password|| loading}> {loading? <SyncOutlined spin /> : "Submit"} </button> 
         </div>       
 
