@@ -1,5 +1,8 @@
 import AWS from 'aws-sdk';
 import { nanoid } from 'nanoid';
+import Course from "../models/course";
+import sllugify from "slugify";
+//import slugify from "slugify";
 
 const awsConfig = {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -70,17 +73,19 @@ export const uploadImage = async (req, res) => {
     }
   };
 
+  // React Course for Beginners
+
   export const create = async (req, res) => {
     // console.log("CREATE COURSE", req.body);
     // return;
     try {
       const alreadyExist = await Course.findOne({
-        slug: slugify(req.body.name.toLowerCase()),
+        slug: sllugify(req.body.name.toLowerCase()),
       });
       if (alreadyExist) return res.status(400).send("Title is taken");
   
       const course = await new Course({
-        slug: slugify(req.body.name),
+        slug: sllugify(req.body.name),
         instructor: req.user._id,
         ...req.body,
       }).save();
@@ -92,7 +97,7 @@ export const uploadImage = async (req, res) => {
     }
   };
   
-  export const read = async (req, res) => {
+  /*export const read = async (req, res) => {
     try {
       const course = await Course.findOne({ slug: req.params.slug })
         .populate("instructor", "_id name")
@@ -101,4 +106,4 @@ export const uploadImage = async (req, res) => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }; */
