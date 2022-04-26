@@ -11,7 +11,7 @@ export const requireSignin = expressJwt({
 
 export const isInstructor = async (req, res, next) => {
     try {
-      const user = await User.findById('6267f3bfbb9b444d00d8194f').exec();
+      const user = await User.findById(req.body.user._id).exec();
       if (!user.role.includes("Instructor")) {
         return res.sendStatus(403);
       } else {
