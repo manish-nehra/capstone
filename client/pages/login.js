@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import {SyncOutlined} from '@ant-design/icons';
 import Link from 'next/link';
 import { Context } from '../context';
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/router';
 const Login = () => {
  const [email, setEmail] = useState("kanikathakur123@gmail.com");
       const [password, setPassword] = useState("rrrrrr");

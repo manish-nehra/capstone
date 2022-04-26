@@ -76,11 +76,13 @@ const TopNav = () => {
            )
             
             )}
+            
         
         {user !== null && (
              <>
 				  
             <SubMenu  icon={<CoffeeOutlined />} title={user && user.name} style={{ marginLeft: 'auto' }}>
+        
                <ItemGroup>
                     <Item key= "/user" onClick={(e)=>setCurrent(e.key)} >
 				     <Link href = "/user">
@@ -93,6 +95,18 @@ const TopNav = () => {
             </SubMenu>
             </>
         )}
+      {user && user.role && user.role.includes("Instructor") && (
+        <Item
+          key="/instructor"
+          onClick={(e) => setCurrent(e.key)}
+          icon={<TeamOutlined />}
+      
+        >
+          <Link href="/instructor">
+            <a>Instructor</a>
+          </Link>
+        </Item>
+      )}
 
         </Menu>
         );

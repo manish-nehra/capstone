@@ -1,17 +1,17 @@
 import expressJwt from "express-jwt";
-
+import User from "../models/user";
 export const requireSignin = expressJwt({
     getToken: (req, res) => {
         console.log(req.cookies)
-        return req.cookies.token
+        return req.cookies.token;
     },
     secret: process.env.JWT_SECRET,
-    algorithms: ["KEJDI"],
+    algorithms: ["HS256"],
 });  //req.user._id
 
 export const isInstructor = async (req, res, next) => {
     try {
-      const user = await User.findById(req.user._id).exec();
+      const user = await User.findById('6267f3bfbb9b444d00d8194f').exec();
       if (!user.role.includes("Instructor")) {
         return res.sendStatus(403);
       } else {

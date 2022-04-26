@@ -86,7 +86,7 @@ export const uploadImage = async (req, res) => {
   
       const course = await new Course({
         slug: sllugify(req.body.name),
-        instructor: req.user._id,
+        instructor: req.body.user._id,
         ...req.body,
       }).save();
   

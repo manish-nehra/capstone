@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import axios from "axios";
 import InstructorRoute from "../../../components/routes/InstructorRoute";
 import CourseCreateForm from "../../../components/forms/CourseCreateForm";
 import Resizer from "react-image-file-resizer";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-
+import { Context } from "../../../context";
 const CourseCreate = () => {
   // state
   const [values, setValues] = useState({
@@ -17,6 +17,7 @@ const CourseCreate = () => {
     category: "",
     loading: false,
   });
+  	const { state: { user } } = useContext(Context);
   const [image, setImage] = useState({});
   const [preview, setPreview] = useState("");
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
@@ -76,6 +77,7 @@ const CourseCreate = () => {
       const { data } = await axios.post("/api/course", {
         ...values,
         image,
+        user
       });
       toast("Great! Now you can start adding lessons");
       router.push("/instructor");

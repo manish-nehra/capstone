@@ -3,7 +3,6 @@ import { Context } from '../../context'
 import UserRoute from '../../components/routes/UserRoute';
 
 const UserIndex = () => {
-  const {state:{user},} = useContext(Context);
    
     return (	 
           	<UserRoute>
