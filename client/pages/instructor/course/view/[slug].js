@@ -59,7 +59,7 @@ const CourseView = () => {
             <hr />
             <div className="row">
               <div className="col">
-                <ReactMarkdown source={course.description} />
+                <ReactMarkdown children={course.description} />
               </div>
             </div>
           </div>
