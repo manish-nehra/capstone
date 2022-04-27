@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import Course from "../models/course";
 import sllugify from "slugify";
 //import slugify from "slugify";
-
+import { readFileSync } from "fs";
 const awsConfig = {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -107,3 +107,56 @@ export const uploadImage = async (req, res) => {
       console.log(err);
     }
   };
+
+  export const uploadVideo = async (req, res) => {
+  try {
+    const { video } = req.files;
+    // console.log(video);
+    if (!video) return res.status(400).send("No video");
+
+    // video params
+    const params = {
+      Bucket: "learnzilla-bucket",
+      Key: `${nanoid()}.${video.type.split("/")[1]}`,
+      Body: readFileSync(video.path),
+      ACL: "public-read",
+      ContentType: video.type,
+    };
+
+    // upload to s3
+    S3.upload(params, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(400);
+      }
+      console.log(data);
+      res.send(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const removeVideo = async (req, res) => {
+  try {
+    const { Bucket, Key } = req.body;
+    // console.log("VIDEO REMOVE =====> ", req.body);
+
+    // video params
+    const params = {
+      Bucket,
+      Key,
+    };
+
+    // upload to s3
+    S3.deleteObject(params, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(400);
+      }
+      console.log(data);
+      res.send({ ok: true });
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
