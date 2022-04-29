@@ -49,3 +49,5 @@ first delete package-lock.json file
 then run -> npm i package.json --save
 -> npm install 
 -> npm run dev
+
+npm i react-player -v
