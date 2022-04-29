@@ -46,8 +46,19 @@ const Register = () => {
 
     return ( 
     <>
-        <h1 className ="jumbotron text-center bg-primary square mb-3 mt-1 p-3"> Register </h1>  
-        <div className ="container col-md-4 offset-md-4 pb-5"> 
+     <div className="mt-4" style={{width:"100%"}}>
+  <div className="row no-gutters">
+    <div className="col-12 col-md-5 ">
+
+      <div className="card-body mt-5 "> 
+        <h1  className='text-center container pb-4' style={{marginTop:"7%",
+                        marginLeft:"27%",
+                        padding:"2%",
+                        borderRadius:"2% 2%",
+                         width:"63%",
+                          backgroundImage: "linear-gradient(to left, #FFFFC2 ,   #C3FDB8)" ,
+                          fontFamily:"'Akshar', sans-serif " }}> Register</h1>
+         <div className ="container col-md-8 offset-md-3 pb-5"  > 
         <form onSubmit ={handleSubmit}>
         <input type ="text"
         className ="form-control mb-4 p-4"
@@ -80,6 +91,15 @@ const Register = () => {
             </Link>
         </p>
         </div> 
+             </div>
+        
+   
+    </div>
+     <div className="col-12 col-md-6 ">
+        <img src="Register.png" style={{ marginTop:"10%", width:"100%" }}/>
+          </div>
+  </div>
+</div>
         </>
     );
 };

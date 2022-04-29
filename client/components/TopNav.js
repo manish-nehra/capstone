@@ -33,18 +33,24 @@ const TopNav = () => {
         router.push("/login");
     };
 
-    return ( <Menu mode = "horizontal" selectedKeys={[current]}>
+    return ( <Menu mode = "horizontal" selectedKeys={[current]}  style={{background: "linear-gradient(to right,  rgba(6, 136, 47, 0.54) 0% ,  rgba(25, 108, 186, 0.76) 92% ,rgba(17,24,119,0.74)100% ) , transparent" ,
+                                                                          color:"white" ,
+                                                                           fontFamily:"Akshar, Haettenschweiler, 'Arial Narrow Bold', sans-serif", 
+                                                                            fontWeight:"bolder" }}>
+      <Item>
+       <img src="logo.png" style={{width:"50px"}}/>
+       </Item> 
         <Item  key="/" onClick={(e)=>setCurrent(e.key)} icon = { <AppstoreOutlined/> } >
-        <Link href = "/"> App </Link> 
+        <Link  href ="/"> home</Link> 
         </Item>
  {user == null && (
-     <>
+    <>
       <Item
         key="/login"
         onClick={(e) => setCurrent(e.key)}
         icon={<LoginOutlined />}
       >
-        <Link href="/login">
+        <Link  href="/login">
           <a>Login</a>
         </Link>
       </Item>
@@ -54,7 +60,7 @@ const TopNav = () => {
         onClick={(e) => setCurrent(e.key)}
         icon={<UserAddOutlined />}
       >
-        <Link href="/register">
+        <Link   href="/register">
           <a>Register</a>
         </Link>
       </Item>
@@ -66,13 +72,13 @@ const TopNav = () => {
 		   key="/instructor/course/create" 
 		   onClick={(e)=>setCurrent(e.key)}
 		   icon = { <CarryOutOutlined/> } >
-              <Link href = "/instructor/course/create"><a>Create Course</a></Link> </Item>
+              <Link   href = "/instructor/course/create"><a>Create Course</a></Link> </Item>
 		   ):(
 		   <Item 
 		   key="/user/becomeInstructor" 
 		   onClick={(e)=>setCurrent(e.key)}
 		   icon = { <TeamOutlined/> } >
-              <Link href = "/user/becomeInstructor"><a>Become Instructor</a></Link> </Item>
+              <Link  href = "/user/becomeInstructor"><a>Become Instructor</a></Link> </Item>
            )
             
             )}
@@ -83,9 +89,10 @@ const TopNav = () => {
 				  
             <SubMenu  icon={<CoffeeOutlined />} title={user && user.name} style={{ marginLeft: 'auto' }}>
         
-               <ItemGroup>
+               <ItemGroup  style={{  fontFamily:"Akshar, Haettenschweiler, 'Arial Narrow Bold', sans-serif", 
+                                                                            fontWeight:"bolder" }}>
                     <Item key= "/user" onClick={(e)=>setCurrent(e.key)} >
-				     <Link href = "/user">
+				     <Link  href = "/user">
 					   <a>Dashboard</a>
 					 </Link>
 					 
@@ -102,7 +109,7 @@ const TopNav = () => {
           icon={<TeamOutlined />}
       
         >
-          <Link href="/instructor">
+          <Link  href="/instructor">
             <a>Instructor</a>
           </Link>
         </Item>

@@ -50,10 +50,24 @@ const Login = () => {
         setLoading(false);
     }
 };
+// style={{border:"5px solid black"}}
 
     return ( <>
-        <h1 className = "jumbotron text-center bg-primary square mb-3 mt-1 p-3"> Login </h1>
-        <div className ="container col-md-4 offset-md-4 pb-5"> 
+    <div className="mt-4" style={{width:"100%"}}>
+  <div className="row no-gutters">
+    <div className="col-12 col-md-6 " >
+     <img src="signup.png"style={{  width:"95%"  }} />
+    </div>
+    <div className="col-12 col-md-6    " >
+      <div className="card-body mt-5"> 
+         <h1  className=' text-center container col-md-8  pb-5' style={{marginTop:"7%",
+                        marginRight:"37%", 
+                        padding:"2%",
+                        borderRadius:"2% 2%",
+                        width:"54%",
+                          backgroundImage: "linear-gradient(to right, #FFFFC2 ,   #C3FDB8)" ,
+                          fontFamily:"'Akshar', sans-serif " }}> Login </h1>
+        <div className ="container col-md-7  pb-5 ml-5" > 
         <form onSubmit ={handleSubmit}>
        <input type = "email"
         className = "form-control mb-4 p-4"
@@ -88,6 +102,11 @@ const Login = () => {
 		
 		
         </div>
+        </div>
+    </div>
+  </div>
+</div>
+       
          </>
     );
 };
