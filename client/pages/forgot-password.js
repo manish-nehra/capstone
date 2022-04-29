@@ -3,7 +3,7 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 import {SyncOutlined} from '@ant-design/icons';      
 import {Link} from 'next/link';
-import {Context} from '../public/context';
+import {Context} from '../context';
 import {useRouter} from 'next/router';
 
 const ForgotPassword = () => {

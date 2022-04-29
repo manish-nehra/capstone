@@ -113,7 +113,7 @@ export const uploadImage = async (req, res) => {
     try {
       // console.log("req.user._id", req.user._id);
     // console.log("req.params.instructorId", req.params.instructorId);
-    if (req.user._id != req.params.instructor._id) {
+    if (req.user._id != req.params.instructorId) {
       return res.status(400).send("Unauthorized");
     }
 
@@ -147,7 +147,7 @@ export const uploadImage = async (req, res) => {
 
 export const removeVideo = async (req, res) => {
   try {
-    if (req.user._id != req.params.instructor._id) {
+    if (req.user._id != req.params.instructorId) {
       return res.status(400).send("Unauthorized");
     }
     

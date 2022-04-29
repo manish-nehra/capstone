@@ -20,6 +20,7 @@ const UpdateLessonForm = ({
           className="form-control square"
           onChange={(e) => setCurrent({ ...current, title: e.target.value })}
           value={current.title}
+           placeholder="Title"
           autoFocus
           required
         />

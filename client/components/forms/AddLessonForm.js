@@ -38,7 +38,7 @@ import { CloseCircleFilled, CloseCircleOutlined } from "@ant-design/icons";
           <input onChange={handleVideo} type="file" accept="video/*" hidden />
         </label>
 
-        {!uploading && values.video.location && (
+        {!uploading && values.video.Location && (
           <Tooltip title="Remove">
             <span onClick={handleVideoRemove} className="pt-1 pl-3">
               <CloseCircleFilled className="text-danger d-flex justify-content-center pt-4 pointer"/>
