@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 import { nanoid } from 'nanoid';
-import Course from "../models/course";
+import Course from "../models/course";  
 import sllugify from "slugify";
 //import slugify from "slugify";
 import { readFileSync } from "fs";
@@ -205,7 +205,7 @@ export const update = async (req, res) => {
     // console.log(slug);
     const course = await Course.findOne({ slug }).exec();
     // console.log("COURSE FOUND => ", course);
-    if (req.user._id != course.instructor) {
+    if (req.user._id != req.params.instructorId) {
       return res.status(400).send("Unauthorized");
     }
 
@@ -221,9 +221,9 @@ export const update = async (req, res) => {
 };
       //Remove Course
 export const removeLesson = async (req, res) => {
-  const { slug, lessonId } = req.params;
+  const { slug, lessonId   } = req.params;
   const course = await Course.findOne({ slug }).exec();
-  if (req.user._id != course.instructor) {
+  if (req.user._id != req.params.instructorId) {
     return res.status(400).send("Unauthorized");
   }
 
@@ -266,4 +266,70 @@ export const updateLesson = async (req, res) => {
     console.log(err);
     return res.status(400).send("Update lesson failed");
   }
+};
+
+
+export const publishCourse = async (req, res) => {
+  try {
+    console.log("publish course section");
+    const { courseId } = req.params;
+    // find post
+    const courseFound = await Course.findById(courseId)
+      .select("instructor")
+      .exec();
+    // is owner?
+    if (req.user._id != courseFound.instructor._id) {
+      return res.status(400).send("Unauthorized");
+    }
+
+    const course = await Course.findByIdAndUpdate(
+      courseId,
+      { published: true },
+      { new: true }
+    ).exec();
+    // console.log("course published", course);
+    // return;
+    res.json(course);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send("Publish course failed");
+  }
+};
+
+export const unpublishCourse = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    // find post
+    const courseFound = await Course.findById(courseId)
+      .select("instructor")
+      .exec();
+    // is owner?
+    if (req.user._id != courseFound.instructor._id) {
+      return res.status(400).send("Unauthorized");
+    }
+
+    let course = await Course.findByIdAndUpdate(
+      courseId,
+      { published: false },
+      { new: true }
+    ).exec();
+
+        res.json(course);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send("Unpublish course failed");
+  }
+};
+
+
+export const courses = async (req, res) => {
+  // console.log("all courses");
+  const all = await Course.find({ published: true })
+    // .limit(11)
+    // .select("-lessons")
+    .populate("instructor", "_id name")
+    // .populate("categories", "_id name")
+    .exec();
+  console.log("============> ", all);
+  res.json(all);
 };

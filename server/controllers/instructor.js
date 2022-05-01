@@ -5,7 +5,7 @@ import Course from "../models/course";
 
 export const makeInstructor = async (req, res) => {
   try {
-     console.log("================================================================");
+     console.log("======================= =========================================");
      console.log(req.body);
     const user = await User.findById(req.body.user._id).exec();
     const { Account, Ifsccode} = req.body;

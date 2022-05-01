@@ -260,7 +260,7 @@ const handleUpdateLesson = async (e) => {
             )}
           ></List>
         </div>
-      </div>
+      </div>  
 
       <Modal
         title="Update lesson"

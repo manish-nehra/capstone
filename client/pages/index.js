@@ -1,21 +1,32 @@
-import React, {useEffect, useRef } from 'react';
+import React, {useEffect, useRef,useState } from 'react';
 import lottie from 'lottie-web';
+// import course from '../../server/models/course';
+import axios from 'axios';
 
 const Index = () => {
-	
+
+	const[courses,setCourses] = useState([]);
+
+
 	const container = useRef(null)
 	
 	useEffect(() => {
-		lottie.loadAnimation({
+	
+				
+		async function fetchCourses() {
+				const { data } = await axios.get('/api/courses');
+				setCourses(data);
+			}
+		fetchCourses();
+		}, [])
+useEffect(() => {
+			lottie.loadAnimation({
 			container: container.current,
 			renderer:'svg',
 			autoplay: true,
 			loop:true,
 			animationData: require('./office.json')
-			
-			
-			
-		})
+				})
 	}, [])
     return (
         <>
@@ -41,6 +52,20 @@ const Index = () => {
 				      <div className="container " ref = {container}></div>
 			     </div>
 			   </div>
+
+			   <div className='container-fluid'>
+				<div className="row">
+					{courses.map((course) => (
+						<div key={course._id} className="col-md-4">
+							{<pre>{JSON.stringify(courses)}</pre>}
+
+						</div>
+					))}
+
+
+				</div>
+				
+				</div>
 			
         </>
     );
