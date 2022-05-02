@@ -33,7 +33,7 @@ const TopNav = () => {
         router.push("/login");
     };
 
-    return ( <Menu mode = "horizontal" selectedKeys={[current]}  style={{background: "linear-gradient(to right,  rgba(6, 136, 47, 0.54) 0% ,  rgba(25, 108, 186, 0.76) 92% ,rgba(17,24,119,0.74)100% ) , transparent" ,
+    return ( <Menu mode = "horizontal" selectedKeys={[current]}  style={{ background: "linear-gradient(to right,  rgba(6, 136, 47, 0.54) 0% ,  rgba(25, 108, 186, 0.76) 92% ,rgba(17,24,119,0.74)100% ) " ,
                                                                           color:"white" ,
                                                                            fontFamily:"Akshar, Haettenschweiler, 'Arial Narrow Bold', sans-serif", 
                                                                             fontWeight:"bolder" }}>

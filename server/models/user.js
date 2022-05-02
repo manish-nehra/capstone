@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 const { ObjectId } = Schema;  
-
 const userSchema = new Schema({
     name:{
         type: String , 
@@ -13,7 +12,6 @@ const userSchema = new Schema({
         trim: true,
         required: true,
         unique: true,
-
     },
     password:{
         type: String,
@@ -25,12 +23,10 @@ const userSchema = new Schema({
         type: String,
         default: "/avatar.png",
     },
-
     role:{
         type:[String],
         default:["Subscriber"],
         enum:["Subscriber","Instructor","Admin"],
-
     },
     Ifsccode:{
         type:String,
@@ -51,5 +47,4 @@ const userSchema = new Schema({
   },
   { timestamps: true }
 );
-
 export default mongoose.model("User", userSchema);

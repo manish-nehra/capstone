@@ -5,7 +5,13 @@ const router = express.Router();
 //middleware
 import { requireSignin } from "../middlewares";
 
-import {register, login, logout, currentUser, forgotPassword, sendTestEmail, resetPassword} 
+import {register,
+    login, 
+    logout, 
+    currentUser, 
+    forgotPassword, 
+    sendTestEmail, 
+    resetPassword} 
 from "../controllers/auth";
 
 router.post("/register",register);
