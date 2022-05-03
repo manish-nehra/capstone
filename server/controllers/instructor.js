@@ -5,19 +5,25 @@ import Course from "../models/course";
 
 export const makeInstructor = async (req, res) => {
   try {
-    
+     console.log("======================= =========================================");
+     console.log(req.body);
     const user = await User.findById(req.body.user._id).exec();
     const { Account, Ifsccode} = req.body;
     // validation
-    if (!Ifsccode || !Ifsccode.length == 10) {
+     if ((!Account) && (Account.length != 12)) {
+      return res
+        .status(400)
+        .send("Ifsccode is required and should be min 8 digit long");
+    }
+    if ((!Ifsccode) && (Ifsccode.length != 10)) {
       return res
         .status(400)
         .send("Ifsccode is required and should be min 8 digit long");
     }
      let userObj = await User.findById(user._id).exec();
-    // const userExists = awat User.findOne({seller: Account});
+     const userExists = await User.findOne({seller: Account});
     console.log(userObj);
-    if (userObj.seller) {
+    if (userExists) {
       return res.status(400).send("Account is Already have instructor rights");
     }
     else if (!userObj) {
@@ -37,12 +43,12 @@ export const makeInstructor = async (req, res) => {
     }
 
     user.save();
-     return res.send("Instructor Authorization compeleted ").json({ ok: true });
+    console.log("Saved  accont of user ", user);
+    return res.json({ ok: true });
   } catch (err) {
     console.log("MAKE INSTRUCTOR ERR ", err);
   }
 };
-
 
 // export const getAccountStatus = async (req, res) => {
 //   try {

@@ -97,7 +97,7 @@ const CourseCreateForm = ({
               <Button
                 onClick={handleSubmit}
                 disabled={values.loading || values.uploading}
-                className="btn btn-primary"
+               id="savebtn"
                 loading={values.loading}
                 type="primary"
                 size="large"

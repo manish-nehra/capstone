@@ -13,7 +13,7 @@ import {
   instructorCourses,
 } from "../controllers/instructor";
 
-router.post("/become-instructor", requireSignin, makeInstructor);
+router.post("/make-instructor", requireSignin, makeInstructor);
 // router.post("/get-account-status", requireSignin, getAccountStatus);
 router.post("/current-instructor", requireSignin, currentInstructor);
 

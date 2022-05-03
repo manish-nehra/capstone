@@ -11,8 +11,9 @@ import { toast } from 'react-toastify';
 // import { Context } from '../context';
 import { useRouter } from 'next/router';
 const BecomeInstructor = () => {
-	
-	const [Accounts, setAccounts] = useState("");
+	//state
+	// const [name, setName] = useState("");
+	const [Account, setAccount] = useState("");
 	const [Ifsccode, setIfsccode] = useState("");
 	const [loading, setLoading] = useState(false);
 
@@ -26,27 +27,27 @@ const BecomeInstructor = () => {
 	// console.log("BecomeInstructor");
 	// const becomeInstructor = () => {
 	const becomeInstructor = async (e) => {
-		// console.log("abcd")
-		// console.log(user)
+		console.log("abcd")
+		console.log(user)
 		e.preventDefault();
-	try {
+		try {
 			// setLoading(true);
-			await axios.post(`/api/become-instructor`, {
-				Account: Accounts,
+			await axios.post(`/api/make-instructor`, {
+				Account: Account,
 				Ifsccode: Ifsccode,
 				user: user
 			}).then(data => {
-				console.log(data);
+				// console.log(data)
 				localStorage.setItem("user", JSON.stringify(data.data));
 				// router.push("/instructor/course/create");
-				window.location.href ="../instructor/course/create";
+				window.location.href ="/instructor/course/create";
 			}).catch(error => {
-		toast(error.response.data);
-				// toast(" failed as form is not completed.");
+				
+				toast(error.response.status);
 				setLoading(false);
 				console.log(error);
 			});
-		} catch (error) {
+		} catch (err) {
 			toast(" failed as form is not completed.");
 			setLoading(false);
 		};
@@ -58,40 +59,38 @@ const BecomeInstructor = () => {
 			<div className="container">
 				<div className="row">
 					<div className="col-md-6 offset-md-3 text-center">
-						<div className="pt-1">
-							<UserSwitchOutlined className="display-1 pb-3" />
+						<div className="pt-4">
+							<UserSwitchOutlined className="display-1 pb-1" />
 							<br />
 							<h2>Setup payout to publish courses </h2>
 							<p className="lead text-warning">Share your bank account details to recieve desire earnings for ur respective courses</p>
-							      <form onSubmit={BecomeInstructor}>
 							<input type="text"
 								className="form-control mb-4 p-4"
-								value={Accounts}
-								onChange={(e) => setAccounts(e.target.value)}
-								placeholder="Enter Adhaar Card"
+								value={Account}
+								onChange={(e) => setAccount(e.target.value)}
+								placeholder="Enter Adhaar card"
 								required />
 							<input type="text"
 								className="form-control mb-4 p-4"
 								value={Ifsccode}
 								onChange={(e) => setIfsccode(e.target.value)}
-								placeholder="Enter  Phone number linked with adhaar card"
+								placeholder="Enter phone no."
 								required />
 							<div className="d-grid gap-2">
 								<Button
 									className="mb-3"
-									type="submit"
+									type="primary"
 									block
 									shape="round"
 									icon={loading ? <LoadingOutlined /> : <SettingOutlined />}
 									size="small"
-									disabled={!Accounts||!Ifsccode||loading}
-	
-	
+									disabled={!user || loading}
+									onClick={becomeInstructor}
 								>
-								  {loading ? <SyncOutlined spin /> : "Submit"}
-          						</Button>	
+									{loading ? "Processing..." : " SUBMIT"}
+								</Button>
 							</div>
-						   </form>
+
 							<p className="lead">you will be provided create course acess soon</p>
 						</div>
 					</div>
