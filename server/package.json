@@ -4,32 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon  -r esm  server.js"
+    "start": "nodemon -r esm server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1096.0",
+    "aws-sdk": "^2.876.0",
     "aws4": "^1.11.0",
     "bcrypt": "^5.0.1",
-    "cookie-parser": "^1.4.6",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
-    "dotenv": "^16.0.0",
+    "dotenv": "^8.6.0",
     "esm": "^3.2.25",
-    "express": "^4.17.2",
+    "express": "^4.17.1",
     "express-formidable": "^1.2.0",
-    "express-jwt": "^6.1.1",
+    "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb-client-encryption": "^2.1.0",
-    "mongoose": "^5.13.14",
+    "mongoose": "^5.12.0",
     "morgan": "^1.10.0",
-    "nanoid": "^3.3.2",
-    "nodemon": "^2.0.15",
+    "nanoid": "^3.3.3",
+    "nodemon": "^2.0.7",
     "package.json": "^2.0.1",
-    "query-string": "^7.1.1",
-    "slugify": "^1.6.5",
-    "stripe": "^8.214.0"
+    "query-string": "^7.0.0",
+    "slugify": "^1.5.0",
+    "stripe": "^8.141.0"
   }
 }

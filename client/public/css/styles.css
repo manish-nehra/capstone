@@ -17,6 +17,46 @@
 	
 }
 
+
+
+#menud {
+	background: linear-gradient(to right,  rgba(6, 136, 47, 0.54) 0% ,  rgba(25, 108, 186, 0.76) 92% ,rgba(17,24,119,0.74) 100% ) , transparent;
+	color:white;
+	font-family:Akshar, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-weight:bold;
+	font-size: larger;
+}
+.ant-menu>.ant-menu-item{
+	border-radius:0% 0% 12% 12%;
+	margin:0;
+	padding:0;
+}
+
+.d .ant-menu>.ant-menu-item:hover,
+.d .ant-menu-item-selected a:hover,
+.d .ant-menu-item-selected a,
+.d .ant-menu-item-selected,
+.d .ant-menu>ant-menu-item-open,
+.d .ant-menu>ant-menu-item-active,
+.d .ant-menu>.ant-menu-submenu:hover,
+.d .ant-menu-submenu-selected a:hover,
+.d .ant-menu-submenu-selected a,
+.d .ant-menu-submenu-selected,
+.d .ant-menu>ant-menu-submenu-open,
+.d .ant-menu>ant-menu-submenu-active,
+.d .ant-menu>.ant-menu-item-selected .link:hover ,
+.d .ant-menu>.ant-menu-item-selected .link:active{
+color : rgb(250, 195, 15) !important;
+/* font-size: 21px; */
+font-weight: bolder;
+text-shadow: 1px 1.5px 1.5px rgba(29, 29, 29, 0.555),
+0px -1px 4px rgba(27, 16, 16, 0.178)
+
+  }
+
+
+
+
 .form-control{
 	direction:right;
 	border-color:#4B5320;
@@ -31,10 +71,12 @@
 }
 
 
+
 #lottieContainer{
 	margin-top: -10%;
 	width:70%;
 	margin-left:auto;
+	margin-bottom: -3%;
 	
 }
 

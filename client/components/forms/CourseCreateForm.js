@@ -12,11 +12,7 @@ const CourseCreateForm = ({
   uploadButtonText,
   handleImageRemove = (f) => f,
   editPage = false,
-}) => {
-  const children = [];
-  for (let i = 9.99; i <= 100.99; i++) {
-    children.push(<Option key={i.toFixed(2)}>${i.toFixed(2)}</Option>);
-  }
+}) =>{
   return (
     <>
       {values && (
@@ -43,35 +39,20 @@ const CourseCreateForm = ({
             ></textarea>
           </div>
 
-          <div className="form-row">
-            <div className="col">
+         
               <div className="form-group">
                 <Select
                   style={{ width: "100%" }}
                   size="large"
                   value={values.paid}
-                  onChange={(v) => setValues({ ...values, paid: v, price: 0 })}
+                  onChange={(v) => setValues(0)}
                 >
-                  <Option value={true}>Paid</Option>
-                  <Option value={false}>Free</Option>
+               
+                  <Option value={true}>Free</Option>
                 </Select>
               </div>
-            </div>
-
-            {values.paid && (
-              <div className="form-group">
-                <Select
-                  defaultValue="$9.99"
-                  style={{ widht: "100%" }}
-                  onChange={(v) => setValues({ ...values, price: v })}
-                  tokenSeparators={[,]}
-                  size="large"
-                >
-                  {children}
-                </Select>
-              </div>
-            )}
-          </div>
+        
+       
 
           <div className="form-group">
             <input
@@ -121,7 +102,6 @@ const CourseCreateForm = ({
                 type="primary"
                 size="large"
                 shape="round"
-                style={{color:"red !important"}}
               >
                 {values.loading ? "Saving..." : "Save & Continue"}
               </Button>

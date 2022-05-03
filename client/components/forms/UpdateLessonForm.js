@@ -20,7 +20,6 @@ const UpdateLessonForm = ({
           className="form-control square"
           onChange={(e) => setCurrent({ ...current, title: e.target.value })}
           value={current.title}
-           placeholder="Title"
           autoFocus
           required
         />
@@ -64,7 +63,7 @@ const UpdateLessonForm = ({
           <Switch
             className="float-right mt-2"
             disabled={uploading}
-            defaultChecked={current.free_preview}
+            checked={current.free_preview}
             name="fee_preview"
             onChange={(v) => setCurrent({ ...current, free_preview: v })}
           />

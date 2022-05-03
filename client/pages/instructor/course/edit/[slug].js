@@ -152,60 +152,54 @@ const CourseEdit = () => {
    */
 
   const handleVideo = async (e) => {
-    // remove previous
+    // remove previous video
     if (current.video && current.video.Location) {
       const res = await axios.post(
         `/api/course/video-remove/${values.instructor._id}`,
         current.video
       );
-      console.log("REMOVED ===> ", res);
+      console.log("REMOVED ===>", res);
     }
     // upload
     const file = e.target.files[0];
-    console.log(file);
     setUploadVideoButtonText(file.name);
     setUploading(true);
-  
-  // send video as form data
-  const videoData = new FormData();
-  videoData.append("video", file);
-  videoData.append("courseId", values._id);
+    // send video as form data
+    const videoData = new FormData();
+    videoData.append("video", file);
+    videoData.append("courseId", values._id);
+    // save progress bar and send video as form data to backend
+    const { data } = await axios.post(
+      `/api/course/video-upload/${values.instructor._id}`,
+      videoData,
+      {
+        onUploadProgress: (e) =>
+          setProgress(Math.round((100 * e.loaded) / e.total)),
+      }
+    );
+    console.log(data);
+    setCurrent({ ...current, video: data });
+    setUploading(false);
+  };
 
-  // save progress bar and send video as form data to backend
-  const { data } = await axios.post(
-    `/api/course/video-upload/${values.instructor._id}`,
-    videoData,
-    {
-      onUploadProgress: (e) =>
-        setProgress(Math.round((100 * e.loaded) / e.total)),
+  const handleUpdateLesson = async (e) => {
+    // console.log("handle update lesson");
+    e.preventDefault();
+    const { data } = await axios.put(
+      `/api/course/lesson/${slug}/${current._id}`,
+      current
+    );
+    setUploadVideoButtonText("Upload Video");
+    setVisible(false);
+    // update ui
+    if (data.ok) {
+      let arr = values.lessons;
+      const index = arr.findIndex((el) => el._id === current._id);
+      arr[index] = current;
+      setValues({ ...values, lessons: arr });
+      toast("Lesson updated");
     }
-  );
-
-  // once response is received
-  console.log(data);
-  setCurrent({ ...current, video: data });
-  setUploading(false);
-};
-
-const handleUpdateLesson = async (e) => {
-  // console.log("handel update lesson")
-  e.preventDefault();
-  const { data } = await axios.put(
-    `/api/course/lesson/${slug}/${current._id}`,
-    current
-  );
-   // console.log("LESSON UPDATED AND SAVED ===> ", data);
-   setUploadVideoButtonText("Upload video");
-   setVisible(false);
-   // update lessons
-   if (data.ok) {
-     let arr = values.lessons;
-     const index = arr.findIndex((el) => el._id === current._id);
-     arr[index] = current;
-     setValues({ ...values, lessons: arr });
-     toast("Lesson updated");
-   }
- };
+  };
 
   return (
     <InstructorRoute>
@@ -260,7 +254,7 @@ const handleUpdateLesson = async (e) => {
             )}
           ></List>
         </div>
-      </div>  
+      </div>
 
       <Modal
         title="Update lesson"

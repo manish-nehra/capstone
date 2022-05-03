@@ -1,11 +1,12 @@
-import { useState,useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
 import InstructorRoute from "../../../components/routes/InstructorRoute";
 import CourseCreateForm from "../../../components/forms/CourseCreateForm";
 import Resizer from "react-image-file-resizer";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import { Context } from "../../../context";
+// import user from "../../../../server/models/user";
+
 const CourseCreate = () => {
   // state
   const [values, setValues] = useState({
@@ -17,15 +18,12 @@ const CourseCreate = () => {
     category: "",
     loading: false,
   });
-  	const { state: { user } } = useContext(Context);
   const [image, setImage] = useState({});
   const [preview, setPreview] = useState("");
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
 
-
   // router
   const router = useRouter();
-
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -77,7 +75,6 @@ const CourseCreate = () => {
       const { data } = await axios.post("/api/course", {
         ...values,
         image,
-        user
       });
       toast("Great! Now you can start adding lessons");
       router.push("/instructor");
@@ -101,9 +98,7 @@ const CourseCreate = () => {
           handleImageRemove={handleImageRemove}
         />
       </div>
-      {/* <pre>{JSON.stringify(values, null, 4)}</pre>
-      <hr/>
-      <pre>{JSON.stringify(image, null, 4)}</pre> */}
+   
     </InstructorRoute>
   );
 };

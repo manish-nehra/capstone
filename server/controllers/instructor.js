@@ -5,12 +5,11 @@ import Course from "../models/course";
 
 export const makeInstructor = async (req, res) => {
   try {
-     console.log("======================= =========================================");
-     console.log(req.body);
+    
     const user = await User.findById(req.body.user._id).exec();
     const { Account, Ifsccode} = req.body;
     // validation
-    if (!Ifsccode || !Ifsccode.length == 8) {
+    if (!Ifsccode || !Ifsccode.length == 10) {
       return res
         .status(400)
         .send("Ifsccode is required and should be min 8 digit long");
@@ -38,8 +37,7 @@ export const makeInstructor = async (req, res) => {
     }
 
     user.save();
-    console.log("Saved  accont of user ", user);
-    return res.json({ ok: true });
+     return res.send("Instructor Authorization compeleted ").json({ ok: true });
   } catch (err) {
     console.log("MAKE INSTRUCTOR ERR ", err);
   }
@@ -60,7 +58,9 @@ export const makeInstructor = async (req, res) => {
 
 export const currentInstructor = async (req, res) => {
   try {
-    const user = await User.findById(req.body.user._id).exec();
+    console.log(req.body);
+    const user = await User.findById(req.body._id).exec();
+    
     // let user = await User.findById(userObj._id).select("-password").exec();
     console.log("############"+user);
     if (!user.role.includes("Instructor")) {

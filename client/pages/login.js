@@ -1,62 +1,61 @@
-import { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import {SyncOutlined} from '@ant-design/icons';
-import Link from 'next/link';
-import { Context } from '../context';
-import {useRouter} from 'next/router';
-const Login = () => {
- const [email, setEmail] = useState("kanikathakur123@gmail.com");
-      const [password, setPassword] = useState("rrrrrr");
-          const [loading,setLoading] = useState(false);
-		  
-		  //state
-		  const {state: {user}, dispatch} = useContext(Context);
-		  //const {user} = state;
-		  
-		  
-		  // router
-		   const router = useRouter();
-		   
-		   useEffect(()=> {
-			   if (user !== null) router.push("/user");
-		   }, [user]);
-		   
-		  
-		    //console.log("STATE", state);
-           const handleSubmit = async (e) => {
-        e.preventDefault();
-        // console.table({ name, email, password });
-        try{
-            setLoading(true);
-        const {data} = await axios.post(`/api/login`,{
-            email,
-            password,
-        });
-        
-           //toast.success(' Sucessful Login ');
-           //console.log("LOGIN RESPONSE",data);
-		 dispatch({
-			type:"LOGIN",
-			payload: data,
-		}); 
-		// save in local storage
-		 window.localStorage.setItem("user", JSON.stringify(data));
-		  // redirect
-		   router.push("/user");
-		   //setLoading(false);
-    }catch(err){
-        toast.error(err.response.data);
-        setLoading(false);
-    }
-};
-// style={{border:"5px solid black"}}
+import { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { SyncOutlined } from "@ant-design/icons";
+import Link from "next/link";
+import { Context } from "../context";
+import { useRouter } from "next/router";
 
-    return ( <>
+const Login = () => {
+  const [email, setEmail] = useState("ryanstripeseller@gmail.com");
+  const [password, setPassword] = useState("rrrrrr");
+  const [loading, setLoading] = useState(false);
+
+  // state
+  const {
+    state: { user },
+    dispatch,
+  } = useContext(Context);
+  // const { user } = state;
+
+  // router
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user !== null) router.push("/user");
+  }, [user]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.table({ name, email, password });
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`/api/login`, {
+        email,
+        password,
+      });
+      // console.log("LOGIN RESPONSE", data);
+      dispatch({
+        type: "LOGIN",
+        payload: data,
+      });
+      // save in local storage
+      window.localStorage.setItem("user", JSON.stringify(data));
+      // redirect
+      router.push("/user");
+      // setLoading(false);
+    } catch (err) {
+      toast(err.response.data);
+      setLoading(false);
+    }
+  };
+
+  return (
+   <>
     <div className="mt-4" style={{width:"100%"}}>
   <div className="row no-gutters">
     <div className="col-12 col-md-6 " >
-     <img src="signup.png"style={{  width:"95%"  }} />
+     <img src="signup.png"style={{  width:"90%" }} />
     </div>
     <div className="col-12 col-md-6    " >
       <div className="card-body mt-5"> 
@@ -108,7 +107,7 @@ const Login = () => {
 </div>
        
          </>
-    );
+  );
 };
 
 export default Login;

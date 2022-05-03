@@ -72,7 +72,7 @@ const InstructorIndex = () => {
                       <Tooltip title="Unpublished">
                         <CloseCircleOutlined className="h5 pointer text-warning" />
                       </Tooltip>
-                    )} 
+                    )}
                   </div>
                 </div>
               </div>
