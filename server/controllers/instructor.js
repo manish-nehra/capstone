@@ -5,21 +5,17 @@ import Course from "../models/course";
 
 export const makeInstructor = async (req, res) => {
   try {
-     console.log("======================= =========================================");
+     console.log("===================================================================");
      console.log(req.body);
     const user = await User.findById(req.body.user._id).exec();
     const { Account, Ifsccode} = req.body;
     // validation
-     if ((!Account) && (Account.length != 12)) {
+   if(Account.length!==12||Ifsccode.length !==10) {
       return res
         .status(400)
-        .send("Ifsccode is required and should be min 8 digit long");
-    }
-    if ((!Ifsccode) && (Ifsccode.length != 10)) {
-      return res
-        .status(400)
-        .send("Ifsccode is required and should be min 8 digit long");
-    }
+        .send("Account length should be 12 and Ifsccode is required and should be  10 digit long");
+  
+   }
      let userObj = await User.findById(user._id).exec();
      const userExists = await User.findOne({seller: Account});
     console.log(userObj);

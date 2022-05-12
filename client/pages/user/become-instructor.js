@@ -31,7 +31,15 @@ const BecomeInstructor = () => {
 		console.log(user)
 		e.preventDefault();
 		try {
-			// setLoading(true);
+			setLoading(true);
+			if(Account.length!==12||Ifsccode.length !==10)
+			{
+				toast(" Account length should be 12 and Ifsccode is required and should be  10 digit long");
+				setLoading(false);
+			}
+			else{
+
+			
 			await axios.post(`/api/make-instructor`, {
 				Account: Account,
 				Ifsccode: Ifsccode,
@@ -39,16 +47,22 @@ const BecomeInstructor = () => {
 			}).then(data => {
 				// console.log(data)
 				localStorage.setItem("user", JSON.stringify(data.data));
+				toast(" Your sucessfully become an Instructor!");
 				// router.push("/instructor/course/create");
-				window.location.href ="/instructor/course/create";
-			}).catch(error => {
+				setTimeout(()=>{
+window.location.href ="/instructor/course/create";
+				},3000);
 				
-				toast(error.response.status);
+				
+			}).catch(error => {
+				toast(" Account length should be 12 and Ifsccode is required and should be  10 digit long");
+				// toast(error.response.status);
 				setLoading(false);
 				console.log(error);
 			});
+		}
 		} catch (err) {
-			toast(" failed as form is not completed.");
+			toast("Account length should be 12 and Ifsccode is required and should be  10 digit long");
 			setLoading(false);
 		};
 
