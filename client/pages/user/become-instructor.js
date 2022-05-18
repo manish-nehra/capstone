@@ -77,7 +77,7 @@ window.location.href ="/instructor/course/create";
 							<UserSwitchOutlined className="display-1 pb-1" />
 							<br />
 							<h2>Setup payout to publish courses </h2>
-							<p className="lead text-warning">Share your bank account details to recieve desire earnings for ur respective courses</p>
+							<p className="lead text-warning">Share your authentication details to collect desire verifing details to become instructor</p>
 							<input type="text"
 								className="form-control mb-4 p-4"
 								value={Account}
