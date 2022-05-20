@@ -32,9 +32,14 @@ const BecomeInstructor = () => {
 		e.preventDefault();
 		try {
 			setLoading(true);
-			if(Account.length!==12||Ifsccode.length !==10)
+			if((isNaN(Account)&&(isNaN(Ifsccode))))
 			{
-				toast(" Account length should be 12 and Ifsccode is required and should be  10 digit long");
+			toast("Adhaar card and Phone Number is required to be in number format");
+				setLoading(false);	
+			}
+			else if(Account.length!==12||Ifsccode.length !==10)
+			{
+				toast(" Adhaar card length should be 12 and Phone Number is required and should be  10 digit long");
 				setLoading(false);
 			}
 			else{
@@ -77,7 +82,7 @@ window.location.href ="/instructor/course/create";
 							<UserSwitchOutlined className="display-1 pb-1" />
 							<br />
 							<h2>Setup payout to publish courses </h2>
-							<p className="lead text-warning">Share your authentication details to collect desire verifing details to become instructor</p>
+							<p className="lead text-warning">Share your authentication details to provide desire verification details to become instructor</p>
 							<input type="text"
 								className="form-control mb-4 p-4"
 								value={Account}
@@ -105,7 +110,7 @@ window.location.href ="/instructor/course/create";
 								</Button>
 							</div>
 
-							<p className="lead">you will be provided create course acess soon</p>
+							<p className="lead">you will be provided create course access soon</p>
 						</div>
 					</div>
 				</div>

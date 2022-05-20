@@ -13,14 +13,14 @@ export const makeInstructor = async (req, res) => {
    if(Account.length!==12||Ifsccode.length !==10) {
       return res
         .status(400)
-        .send("Account length should be 12 and Ifsccode is required and should be  10 digit long");
+        .send("Adhaar card length should be 12 and Phone Number is required and should be  10 digit long");
   
    }
      let userObj = await User.findById(user._id).exec();
      const userExists = await User.findOne({seller: Account});
     console.log(userObj);
     if (userExists) {
-      return res.status(400).send("Account is Already have instructor rights");
+      return res.status(400).send(" this Adhaar card is Already have instructor rights");
     }
     else if (!userObj) {
       return res.status(401).send("Unauthorized");
@@ -39,7 +39,7 @@ export const makeInstructor = async (req, res) => {
     }
 
     user.save();
-    console.log("Saved  accont of user ", user);
+    // console.log("Saved  account of user ", user);
     return res.json({ ok: true });
   } catch (err) {
     console.log("MAKE INSTRUCTOR ERR ", err);
