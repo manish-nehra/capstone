@@ -126,7 +126,7 @@ const CourseView = () => {
   const handleUnpublish = async (e, courseId) => {
     try {
       let answer = window.confirm(
-        "Once you unpublsih your course, it will no be available for users to enroll"
+        "Once you unpublsih your course, it will not be available for users to enroll"
       );
       if (!answer) return;
       const { data } = await axios.put(`/api/course/unpublish/${courseId}`);
